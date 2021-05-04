@@ -1,11 +1,10 @@
-import { useMutation } from '@apollo/client';
-import React, { useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Button } from 'semantic-ui-react';
 import { LOGIN } from '../graphql/mutations';
 import { useForm } from '../hooks/useForm';
 import { useAuthContext } from '../context/auth';
-
 const initState = {
   username: '',
   password: '',
@@ -14,6 +13,7 @@ const initState = {
 const Login = () => {
   const { login } = useAuthContext();
   const [loginUser] = useMutation(LOGIN);
+
   const submit = () => {
     loginUser({
       variables: { ...values },

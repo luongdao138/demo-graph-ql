@@ -71,7 +71,7 @@ const PostDetail = () => {
               </Card.Content>
             </Card>
 
-            <CommentForm postId={post.id} />
+            <CommentForm postId={post.id} username={post.username} />
 
             {post.comments.map((comment) => {
               console.log(comment);
