@@ -21,6 +21,7 @@ export const REGISTER = gql`
       createdAt
       token
       avatar
+      activeNots
     }
   }
 `;
@@ -34,6 +35,7 @@ export const LOGIN = gql`
       createdAt
       token
       avatar
+      activeNots
     }
   }
 `;
@@ -114,6 +116,15 @@ export const UPDATE_AVATAR = gql`
     updateAvatar(userId: $userId, avatar: $avatar) {
       id
       avatar
+    }
+  }
+`;
+
+export const RESET_NOTS = gql`
+  mutation resetNots {
+    resetActiveNot {
+      id
+      activeNots
     }
   }
 `;

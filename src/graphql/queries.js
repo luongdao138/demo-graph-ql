@@ -43,6 +43,7 @@ export const GET_USER = gql`
       username
       createdAt
       avatar
+      activeNots
     }
   }
 `;
@@ -123,6 +124,19 @@ export const GET_BY_USERNAME = gql`
         }
         commentCount
       }
+    }
+  }
+`;
+
+export const GET_NOTS = gql`
+  query getNotsQuery($username: String) {
+    getNots(username: $username) {
+      id
+      sender
+      receiver
+      body
+      createdAt
+      postId
     }
   }
 `;

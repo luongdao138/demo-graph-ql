@@ -1,5 +1,5 @@
 import { useMutation } from '@apollo/client';
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Button } from 'semantic-ui-react';
 import { useAuthContext } from '../context/auth';

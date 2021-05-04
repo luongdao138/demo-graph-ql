@@ -4,13 +4,14 @@ import { useHistory } from 'react-router-dom';
 import { Form, Button } from 'semantic-ui-react';
 import { useAuthContext } from '../context/auth';
 import { CREATE_COMMENT } from '../graphql/mutations';
+import { GET_NOTS } from '../graphql/queries';
 import { useForm } from '../hooks/useForm';
 
 const initState = {
   body: '',
 };
 
-const CommentForm = ({ postId }) => {
+const CommentForm = ({ postId, username }) => {
   const { logout } = useAuthContext();
   const history = useHistory();
   const submit = () => {
@@ -19,6 +20,7 @@ const CommentForm = ({ postId }) => {
         postId,
         body: values.body,
       },
+      refetchQueries: [{ query: GET_NOTS, variables: { username } }],
     })
       .then(() => {
         setValues(initState);

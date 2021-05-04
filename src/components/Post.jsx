@@ -50,6 +50,7 @@ const Post = ({ post }) => {
             id: post.id,
             likeCount: post.likeCount,
             likes: post.likes,
+            username: post.username,
           }}
           user={user}
         />

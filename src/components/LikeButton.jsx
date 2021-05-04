@@ -7,8 +7,9 @@ import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../context/auth';
 import ToolTip from './ToolTip';
 import moment from 'moment';
+import { GET_NOTS } from '../graphql/queries';
 
-const LikeButton = ({ post: { id, likes, likeCount }, user }) => {
+const LikeButton = ({ post: { id, likes, likeCount, username }, user }) => {
   const [liked, setLiked] = useState(false);
   const [likePostFunc] = useMutation(LIKE_POST);
   const { logout } = useAuthContext();
@@ -19,6 +20,7 @@ const LikeButton = ({ post: { id, likes, likeCount }, user }) => {
       variables: {
         postId: id,
       },
+      refetchQueries: [{ query: GET_NOTS, variables: { username } }],
     }).catch((error) => {
       logout();
       history.push('/login');
