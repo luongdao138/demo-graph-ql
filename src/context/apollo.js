@@ -45,8 +45,8 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(splitLink),
   cache: new InMemoryCache(),
+  link: authLink.concat(splitLink),
 });
 
 const ApolloContext = ({ children }) => {
