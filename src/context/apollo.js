@@ -2,7 +2,6 @@ import React from 'react';
 import {
   ApolloClient,
   ApolloProvider,
-  createHttpLink,
   split,
   HttpLink,
   InMemoryCache,
@@ -11,16 +10,12 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { setContext } from '@apollo/client/link/context';
 
-// const httpLink = createHttpLink({
-//   uri: 'https://demo-graphql-1.herokuapp.com',
-// });
-// https://demo-graphql-1.herokuapp.com
 const httpLink = new HttpLink({
   uri: 'https://demo-graphql-1.herokuapp.com',
 });
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://demo-graphql-1.herokuapp.com',
+  uri: 'wss://demo-graphql-1.herokuapp.com',
   options: {
     reconnect: true,
   },
